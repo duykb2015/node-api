@@ -11,6 +11,15 @@ async function getCategory() {
     return data
 }
 
+async function deleteCategory(id) {
+    const rows = await db.query(
+        `DELETE FROM menu WHERE id = ${id}`
+    )
+    const data = helper.emptyOrRows(rows);
+
+    return data
+}
+
 async function getProduct() {
     const rows = await db.query(
         `SELECT * FROM product_items`
@@ -21,5 +30,6 @@ async function getProduct() {
 
 module.exports = {
     getCategory,
-    getProduct
+    getProduct,
+    deleteCategory
 }

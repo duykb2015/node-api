@@ -24,4 +24,13 @@ router.get('/product', async function (req, res, next) {
     }
 });
 
+router.get('/category/delete', async function (req, res, next) {
+    try {
+        res.json(await service.deleteCategory(req.query.id));
+    } catch (err) {
+        console.error(`Error while delete category `, err.message);
+        next(err);
+    }
+})
+
 module.exports = router;
